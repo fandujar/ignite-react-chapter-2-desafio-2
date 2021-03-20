@@ -20,8 +20,6 @@ interface FoodProps {
 
 export const Food = function ({ food, handleEditFood, handleDelete }:FoodProps): JSX.Element {
   const [isAvailable, setIsAvailable] = useState(false);
-  console.log(isAvailable);
-
   const handleIsAvailable = async () => {
     await api.put(`/foods/${food.id}`, {
       ...food,

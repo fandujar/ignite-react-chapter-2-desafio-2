@@ -10,15 +10,15 @@ import {iFood} from '../Food';
 interface ModalEditFoodProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateFood: (food: iFood) => void;
+  handleUpdateFood: (food: iFood, editingFood: iFood) => Promise<void>;
   editingFood: iFood;
 }
 
 export const ModalEditFood = function({isOpen, setIsOpen, handleUpdateFood, editingFood}:ModalEditFoodProps) {
   const formRef = createRef<FormHandles>();
 
-  const handleSubmit: SubmitHandler<iFood> = data => {
-    handleUpdateFood(data);
+  const handleSubmit: SubmitHandler<iFood> = (data) => {
+    handleUpdateFood(data, editingFood);
     setIsOpen();
   };
   
